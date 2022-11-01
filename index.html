@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Locked Folder</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div
+      class="container"
+      style="
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      "
+    >
+      <form id="form">
+        <div class="input-group">
+          <span class="input-group-text">Enter code:</span>
+          <input
+            id="code"
+            type="text"
+            class="form-control"
+            aria-label="With textarea"
+          />
+          <button class="btn btn-primary">Submit</button>
+        </div>
+        <div id="resultBox"></div>
+      </form>
+    </div>
+
+    <script>
+      window.onload = () => {
+        const form = document.getElementById("form");
+        const codeInput = document.getElementById("code");
+        const resultBox = document.getElementById("resultBox");
+
+        function showLink() {
+          resultBox.style = "display: block;";
+          resultBox.className = "valid-feedback";
+          resultBox.innerHTML = `Open the link: <a href="https://drive.google.com/drive/folders/14ZueSDjhZK8s74_U7k3cnqMp-pIs9XBz?usp=sharing">Secret folder</a>`;
+        }
+        function showError() {
+          resultBox.style = "display: block;";
+          resultBox.className = "invalid-feedback";
+          resultBox.innerHTML = "Ah, you should not be here !";
+        }
+
+        form.onsubmit = (e) => {
+          e.preventDefault();
+          const isCorrectCode = codeInput.value === "4570";
+
+          isCorrectCode ? showLink() : showError();
+        };
+      };
+    </script>
+  </body>
+</html>
