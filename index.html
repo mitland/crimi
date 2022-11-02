@@ -310,8 +310,13 @@ Author: https://codepen.io/bartaxyz/pen/DWEKVm
     numberSelect[i].style.marginTop = "0px";
   }
 
-  function handleLockClick(){
+  function play() {
+    const audio = new Audio('lock.mp3');
+    audio.play();
+  }
 
+  function handleLockClick(){
+    play();
     fnRotateNum.call(this);
     const numbers = document.querySelectorAll(".number_select .top_number + span");
     const result = [...numbers].map((node) => node.innerHTML);
